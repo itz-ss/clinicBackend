@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "podcasts",
+  "info": {
+    "singularName": "podcast",
+    "pluralName": "podcasts",
+    "displayName": "Podcast"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "guestName": {
+      "type": "string"
+    },
+    "guestDesignation": {
+      "type": "string"
+    },
+    "Podcast": {
+      "type": "component",
+      "component": "media.media-item",
+      "repeatable": false
+    }
+  }
+}
