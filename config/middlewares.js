@@ -5,12 +5,24 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'x-api-secret'],
+      headers: [
+        'Content-Type',
+        'Authorization',
+        'Origin',
+        'Accept',
+        // 'x-api-secret', // ❌ no longer needed
+      ],
       origin: [
         "http://localhost:3000",
         "https://clinic-snowy-five.vercel.app",
       ],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+      methods: [
+        'GET',
+        // 'POST',   // ❌ public website does not need edit permissions
+        // 'PUT',
+        // 'PATCH',
+        // 'DELETE',
+      ],
       credentials: false,
     },
   },
