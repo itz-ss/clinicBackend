@@ -15,10 +15,11 @@ module.exports = [
       origin: [
         "http://localhost:3000",
         "https://clinic-snowy-five.vercel.app",
+        /^https:\/\/clinic-snowy-five-.*\.vercel\.app$/, // allow all Vercel preview deployments
       ],
       methods: [
         'GET',
-        // 'POST',   // ❌ public website does not need edit permissions
+        // 'POST',
         // 'PUT',
         // 'PATCH',
         // 'DELETE',
