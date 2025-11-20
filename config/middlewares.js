@@ -1,37 +1,24 @@
 module.exports = [
-  'strapi::logger',
-  'strapi::errors',
+  "strapi::logger",
+  "strapi::errors",
   {
-    name: 'strapi::cors',
+    name: "strapi::cors",
     config: {
-      enabled: true,
-      headers: [
-        'Content-Type',
-        'Authorization',
-        'Origin',
-        'Accept',
-        // 'x-api-secret', // ❌ no longer needed
-      ],
       origin: [
         "http://localhost:3000",
         "https://clinic-snowy-five.vercel.app",
-        /^https:\/\/clinic-snowy-five-.*\.vercel\.app$/, // allow all Vercel preview deployments
+        /^https:\/\/clinic-snowy-five-.*\.vercel\.app$/,
       ],
-      methods: [
-        'GET',
-        // 'POST',
-        // 'PUT',
-        // 'PATCH',
-        // 'DELETE',
-      ],
-      credentials: false,
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
+      keepHeadersOnError: true,
     },
   },
-  'strapi::security',
-  'strapi::poweredBy',
-  'strapi::query',
-  'strapi::body',
-  'strapi::session',
-  'strapi::favicon',
-  'strapi::public',
+  "strapi::security",
+  "strapi::poweredBy",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
 ];
