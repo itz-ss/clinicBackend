@@ -1,20 +1,21 @@
 module.exports = [
   'strapi::logger',
   'strapi::errors',
-  // {
-  //   name: 'strapi::cors',
-  //   config: {
-  //     enabled: false,
-  //     headers: ['*'],
-  //     origin: [
-  //       'http://localhost:3000',
-  //       'https://clinic-snowy-five.vercel.app',   // frontend
-  //       'https://clinicbackend-production-61e1.up.railway.app', // backend itself
-  //     ],
-  //     methods: ['GET', 'HEAD'], // frontend only views data
-  //     keepHeaderOnError: true,
-  //   },
-  // },
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      headers: ['*'],
+      origin: [
+        'http://localhost:3000',
+        'http://localhost:3001', // Added for doctorPortfolio development
+        'https://clinic-snowy-five.vercel.app',   // frontend
+        'https://clinicbackend-production-61e1.up.railway.app', // backend itself
+      ],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'PATCH'], // Added more methods
+      keepHeaderOnError: true,
+    },
+  },
   'strapi::security',
   'strapi::poweredBy',
   'strapi::query',
