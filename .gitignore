@@ -9,7 +9,6 @@ Icon
 .Spotlight-V100
 .Trashes
 ._*
-.env
 
 ############################
 # Linux
@@ -126,6 +125,5 @@ license.txt
 exports
 .strapi
 dist
-build
 .strapi-updater.json
 .strapi-cloud.json
