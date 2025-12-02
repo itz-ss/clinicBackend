@@ -10,7 +10,7 @@ module.exports = [
         'http://localhost:3000',
         'http://localhost:3001', // Added for doctorPortfolio development
         'https://clinic-snowy-five.vercel.app',   // frontend
-        'https://clinicbackend-production-61e1.up.railway.app', // backend itself
+        'https://clinicbackend-1.onrender.com', // backend itself
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'PATCH'], // Added more methods
       keepHeaderOnError: true,

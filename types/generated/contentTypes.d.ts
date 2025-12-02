@@ -495,6 +495,39 @@ export interface AdminWorkflowStage extends Schema.CollectionType {
   };
 }
 
+export interface ApiAchievementAchievement extends Schema.CollectionType {
+  collectionName: 'achievements';
+  info: {
+    description: '';
+    displayName: 'achievement ';
+    pluralName: 'achievements';
+    singularName: 'achievement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::achievement.achievement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    Name: Attribute.String;
+    photos: Attribute.Media<'images' | 'files', true>;
+    processed_pages: Attribute.JSON;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::achievement.achievement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiEducationalVideoEducationalVideo
   extends Schema.CollectionType {
   collectionName: 'educational_videos';
@@ -1061,6 +1094,7 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'admin::workflow': AdminWorkflow;
       'admin::workflow-stage': AdminWorkflowStage;
+      'api::achievement.achievement': ApiAchievementAchievement;
       'api::educational-video.educational-video': ApiEducationalVideoEducationalVideo;
       'api::event.event': ApiEventEvent;
       'api::media.media': ApiMediaMedia;
