@@ -54,10 +54,10 @@ module.exports = {
       where: { id: achievementId },
       data: { processed_pages: processed },
     });
-console.log("📌 Lifecycle triggered");
-console.log("📌 Achievement Name:", achievementName);
-console.log("📌 PDF Files:", pdfFiles);
+// console.log("📌 Lifecycle triggered");
+// console.log("📌 Achievement Name:", achievementName);
+// console.log("📌 PDF Files:", pdfFiles);
 
-    console.log(`✅ PDF pages generated for Achievement: ${achievementName}`);
+    // console.log(`✅ PDF pages generated for Achievement: ${achievementName}`);
   },
 };
