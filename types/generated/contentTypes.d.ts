@@ -107,47 +107,6 @@ export interface AdminApiTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface AdminAuditLog extends Schema.CollectionType {
-  collectionName: 'strapi_audit_logs';
-  info: {
-    displayName: 'Audit Log';
-    pluralName: 'audit-logs';
-    singularName: 'audit-log';
-  };
-  options: {
-    draftAndPublish: false;
-    timestamps: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    action: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'admin::audit-log',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    date: Attribute.DateTime & Attribute.Required;
-    payload: Attribute.JSON;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'admin::audit-log',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    user: Attribute.Relation<'admin::audit-log', 'oneToOne', 'admin::user'>;
-  };
-}
-
 export interface AdminPermission extends Schema.CollectionType {
   collectionName: 'admin_permissions';
   info: {
@@ -400,98 +359,6 @@ export interface AdminUser extends Schema.CollectionType {
     updatedBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     username: Attribute.String;
-  };
-}
-
-export interface AdminWorkflow extends Schema.CollectionType {
-  collectionName: 'strapi_workflows';
-  info: {
-    description: '';
-    displayName: 'Workflow';
-    name: 'Workflow';
-    pluralName: 'workflows';
-    singularName: 'workflow';
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    contentTypes: Attribute.JSON & Attribute.Required & Attribute.DefaultTo<[]>;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'admin::workflow',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
-    stages: Attribute.Relation<
-      'admin::workflow',
-      'oneToMany',
-      'admin::workflow-stage'
-    >;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'admin::workflow',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface AdminWorkflowStage extends Schema.CollectionType {
-  collectionName: 'strapi_workflows_stages';
-  info: {
-    description: '';
-    displayName: 'Stages';
-    name: 'Workflow Stage';
-    pluralName: 'workflow-stages';
-    singularName: 'workflow-stage';
-  };
-  options: {
-    version: '1.1.0';
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    color: Attribute.String & Attribute.DefaultTo<'#4945FF'>;
-    createdAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'admin::workflow-stage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    name: Attribute.String;
-    permissions: Attribute.Relation<
-      'admin::workflow-stage',
-      'manyToMany',
-      'admin::permission'
-    >;
-    updatedAt: Attribute.DateTime;
-    updatedBy: Attribute.Relation<
-      'admin::workflow-stage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    workflow: Attribute.Relation<
-      'admin::workflow-stage',
-      'manyToOne',
-      'admin::workflow'
-    >;
   };
 }
 
@@ -1086,14 +953,11 @@ declare module '@strapi/types' {
     export interface ContentTypes {
       'admin::api-token': AdminApiToken;
       'admin::api-token-permission': AdminApiTokenPermission;
-      'admin::audit-log': AdminAuditLog;
       'admin::permission': AdminPermission;
       'admin::role': AdminRole;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'admin::workflow': AdminWorkflow;
-      'admin::workflow-stage': AdminWorkflowStage;
       'api::achievement.achievement': ApiAchievementAchievement;
       'api::educational-video.educational-video': ApiEducationalVideoEducationalVideo;
       'api::event.event': ApiEventEvent;
